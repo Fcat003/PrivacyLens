@@ -1,0 +1,26 @@
+[
+  {
+    "packageName": "com.package.meituan",
+    "appName": "美团",
+    "recommend": "App端",
+    "privacyCount_app": [1, 2, 0, 0,1,3,5,1,4,2,4,0],
+    "privacyCount_miniApp": [1, 6, 0, 0,1,3,0,1,4,2,4,0],
+    "score": [80, 85]
+  },
+  {
+    "packageName": "tv.danmaku.bili",
+    "appName": "哔哩哔哩",
+    "recommend": "App端",
+    "privacyCount_app": [0, 6, 0, 1,1,3,0,1,2,2,1,0],
+    "privacyCount_miniApp": [1, 6, 0, 0,1,3,0,1,4,2,4,0],
+    "score": [95, 80]
+  },
+  {
+    "packageName": "com.package.example",
+    "appName": "应用二",
+    "recommend": "app端",
+    "privacyCount_app": [0, 6, 0, 1,1,3,0,1,2,2,1,0],
+    "privacyCount_miniApp": [1, 6, 0, 0,1,3,0,1,4,2,4,0],
+    "score": [75, 80]
+  }
+]

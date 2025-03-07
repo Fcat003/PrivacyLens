@@ -5,6 +5,8 @@ public class AppInfo {
 
     private String packageName;
 
+    private String recommend; //推荐使用的端：app端,小程序端
+
     private int[] privacyCount_app;
     private int[] privacyCount_miniApp;
 

@@ -2,7 +2,8 @@ package com.example.privacylens;
 
 import android.content.Context;
 import android.content.Intent;
-
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private Context context;
-    private List<AppInfo> appList; // 假设你有一个 AppInfo 类，包含 appName、packageName 等
+    private List<AppInfo> appList;
 
     public MyAdapter(Context context, List<AppInfo> appList) {
         this.context = context;
@@ -34,17 +35,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         AppInfo appInfo = appList.get(position);
-
-        // 设置应用名称和包名
         holder.tvAppName.setText(appInfo.getAppName());
         holder.tvPackageName.setText(appInfo.getPackageName());
 
-        // 监听箭头点击事件
+        // 通过 PackageManager 获取应用图标
+        PackageManager pm = context.getPackageManager();
+        try {
+            Drawable icon = pm.getApplicationIcon(appInfo.getPackageName());
+            holder.ivAppIcon.setImageDrawable(icon);
+        } catch (PackageManager.NameNotFoundException e) {
+            // 如果找不到图标，设置默认图标
+            holder.ivAppIcon.setImageResource(R.drawable.ic_launcher_foreground);
+        }
+
+        // 设置点击事件，传递包名给 DetailActivity
         holder.itemView.setOnClickListener(v -> {
-            // 跳转到 DetailActivity
             Intent intent = new Intent(context, DetailActivity.class);
-            // 传递数据
-            intent.putExtra("appName", appInfo.getAppName());
             intent.putExtra("packageName", appInfo.getPackageName());
             context.startActivity(intent);
         });
@@ -68,4 +74,3 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
     }
 }
-

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 定义三列的宽度，这里根据你的需求可调整 -->
+    <dimen name="table_col1_width">100dp</dimen>
+    <dimen name="table_col2_width">120dp</dimen>
+    <dimen name="table_col3_width">100dp</dimen>
+</resources>

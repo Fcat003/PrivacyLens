@@ -15,7 +15,7 @@
         android:text="@string/app_name"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:background="?attr/colorPrimary"
+        android:background="@color/back_main"
         android:textColor="@android:color/white"
         android:padding="16dp" />
 
@@ -29,78 +29,78 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- 应用名称与包名 -->
+            <LinearLayout
+                android:layout_width="379dp"
+                android:layout_height="56dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- 左侧图标 -->
+                <ImageView
+                    android:id="@+id/ivIcon"
+                    android:layout_width="58dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="15dp"
+                    app:srcCompat="@drawable/success" />
+
+                <!-- 右侧文字 -->
+                <TextView
+                    android:id="@+id/tvAppInfo"
+                    android:layout_width="403dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="10dp"
+                    android:text="支付宝\ncom.zhifubao.com"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/tvAppInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="支付宝\ncom.zhifubao.com"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:layout_marginTop="16dp" />
+                android:layout_width="379dp"
+                android:layout_height="1dip"
+                android:background="#999"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="10dp" />
 
             <!-- 绿色标签 -->
-            <TextView
-                android:id="@+id/tvGreenTag"
+
+            <LinearLayout
+                android:layout_width="379dp"
+                android:layout_height="56dp"
+                android:background="@color/back_green"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- 左侧图标 -->
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="58dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="15dp"
+                    app:srcCompat="@drawable/success" />
+
+                <!-- 右侧文字 -->
+                <TextView
+                    android:id="@+id/tvText"
+                    android:layout_width="403dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="10dp"
+                    android:text="本应用推荐使用  小程序端"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <include
+                layout="@layout/table_privacy"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="本应用推荐使用  小程序后端"
-                android:background="@android:color/holo_green_light"
-                android:gravity="center"
-                android:padding="8dp"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp" />
+                android:layout_height="wrap_content"/>
 
-            <!-- 简易表格区域 -->
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:stretchColumns="1,2"
-                android:layout_marginTop="16dp">
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="APP"
-                        android:textSize="16sp"
-                        android:gravity="center" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="多收集数据项"
-                        android:textSize="16sp"
-                        android:gravity="center" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="小程序"
-                        android:textSize="16sp"
-                        android:gravity="center" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1个"
-                        android:gravity="center" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="个人身份\n身份证号码\n手机号"
-                        android:gravity="center" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2个"
-                        android:gravity="center" />
-                </TableRow>
-            </TableLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--不透明度（反着来的）：https://blog.csdn.net/u014649598/article/details/80415796 -->
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="back_main">#387FF5</color>
+    <color name="back_green">#C6F081</color>
+    <color name="app">#1A47AEE6</color>
+    <color name="miniapp">#26FFBF6B</color>
+    <color name="high">#26F80707</color>
+    <color name="min">#0DFCCA00</color>
+    <color name="low">#1AA2EF4D</color>
 </resources>
