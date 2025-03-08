@@ -17,8 +17,8 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="20dip"
             android:layout_marginRight="20dip"
-            android:background="@drawable/privacy_back"
-            android:text="隐私政策分析结果"
+            android:background="@drawable/action_back"
+            android:text="实际行为分析结果"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold"
@@ -45,238 +45,253 @@
         android:paddingStart="5pt"
         android:paddingEnd="5pt"
         android:layout_marginBottom="15dp">
+
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="18dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="APP"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:background="@drawable/bg_rounded_generic"
             android:backgroundTint="@color/app"
+            android:gravity="center"
             android:padding="4dp"
-            android:layout_gravity="center_horizontal"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="多收集数据项"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            android:layout_marginHorizontal="40dp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="小程序"
+            android:text="APP"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="相同功能\n多收集参数"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="39dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/bg_rounded_generic"
             android:backgroundTint="@color/miniapp"
-            android:padding="4dp"/>
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="小程序"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </TableRow>
 
     <!-- 数据行示例1 -->
-    <TableRow android:layout_marginBottom="10dp">
+    <TableRow
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tvApp_1"
+            android:id="@+id/tvAppA_1"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
+            android:background="@drawable/action_rounded_top"
             android:backgroundTint="@color/app"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
             android:lineSpacingMultiplier="1.2"
             android:paddingVertical="4dp"
-            android:text="-\n1个\n3个\n2个" />
+            android:text="-" />
 
         <TextView
+            android:id="@+id/tvAction_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="17dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
+            android:background="@drawable/action_rounded_top"
             android:backgroundTint="@color/high"
             android:gravity="center"
-            android:paddingVertical="4dp"
-            android:text="个人身份\n财产信息\n身份鉴别\n网络身份"
             android:lineSpacingExtra="4dp"
             android:lineSpacingMultiplier="1.2"
-            android:layout_marginHorizontal="17dp"/>
+            android:paddingVertical="4dp"
+            android:text="应用启动" />
 
         <TextView
-            android:id="@+id/tvMiniApp_1"
+            android:id="@+id/tvMiniAppA_1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
+            android:background="@drawable/action_rounded_top"
             android:backgroundTint="@color/miniapp"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
             android:lineSpacingMultiplier="1.2"
             android:paddingVertical="4dp"
-            android:text="-\n1个\n3个\n2个" />
+            android:text="-" />
     </TableRow>
 
     <!-- 数据行示例2 -->
-    <TableRow android:layout_marginBottom="10dp">
+    <TableRow >
 
         <TextView
-            android:id="@+id/tvApp_2"
+            android:id="@+id/tvAppA_2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
-            android:backgroundTint="@color/app"
-            android:gravity="center"
-            android:lineSpacingExtra="4dp"
-            android:lineSpacingMultiplier="1.2"
-            android:paddingVertical="4dp"
-            android:text="-\n1个\n3个\n2个\n-\n1个" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
-            android:backgroundTint="@color/min"
-            android:gravity="center"
-            android:paddingVertical="4dp"
-            android:text="联系信息\n设备信息\n位置信息\n个人资料\n通信信息\n教育工作"
-            android:lineSpacingExtra="4dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_marginHorizontal="17dp"/>
-
-        <TextView
-            android:id="@+id/tvMiniApp_2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
-            android:backgroundTint="@color/miniapp"
-            android:gravity="center"
-            android:lineSpacingExtra="4dp"
-            android:lineSpacingMultiplier="1.2"
-            android:paddingVertical="4dp"
-            android:text="-\n1个\n3个\n2个\n-\n1个" />
-    </TableRow>
-
-    <!-- 数据行示例3 -->
-    <TableRow android:layout_marginBottom="10dp">
-
-        <TextView
-            android:id="@+id/tvApp_3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
-            android:backgroundTint="@color/app"
-            android:gravity="center"
-            android:lineSpacingExtra="4dp"
-            android:lineSpacingMultiplier="1.2"
-            android:paddingVertical="4dp"
-            android:text="3个\n-" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
-            android:backgroundTint="@color/low"
-            android:gravity="center"
-            android:paddingVertical="4dp"
-            android:text="上网记录\n标签信息\n运动信息"
-            android:lineSpacingExtra="4dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_marginHorizontal="17dp"/>
-
-        <TextView
-            android:id="@+id/tvMiniApp_3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
-            android:backgroundTint="@color/miniapp"
-            android:gravity="center"
-            android:lineSpacingExtra="4dp"
-            android:lineSpacingMultiplier="1.2"
-            android:paddingVertical="4dp"
-            android:text="5个\n-" />
-    </TableRow>
-
-    <!-- 数据行示例4 -->
-    <TableRow
-        android:layout_height="100dp"
-        android:layout_width="match_parent">
-
-        <TextView
-            android:id="@+id/tvApp_4"
-            android:layout_width="3dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_rounded_generic"
-            android:backgroundTint="@color/app"
+            android:background="@color/app"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
             android:lineSpacingMultiplier="1.2"
             android:paddingVertical="4dp"
             android:text="3个" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="25dp">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/pinfen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="评分"
-                android:lineSpacingExtra="4dp"
-                android:lineSpacingMultiplier="1.2"
-                android:paddingVertical="4dp"/>
-
-            <ImageView
-                android:id="@+id/info"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/why" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
         <TextView
-            android:id="@+id/tvMiniApp_4"
+            android:id="@+id/tvAction_2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_rounded_generic"
-            android:backgroundTint="@color/miniapp"
+            android:layout_weight="1"
+            android:background="@color/high"
             android:gravity="center"
-            android:text="5个"
+            android:paddingVertical="4dp"
+            android:text="点击我的"
             android:lineSpacingExtra="4dp"
             android:lineSpacingMultiplier="1.2"
-            android:paddingVertical="4dp"/>
+            android:layout_marginHorizontal="17dp"/>
+
+        <TextView
+            android:id="@+id/tvMiniAppA_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/miniapp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingVertical="4dp"
+            android:text="5个" />
+    </TableRow>
+
+    <!-- 数据行示例3 -->
+    <TableRow >
+
+        <TextView
+            android:id="@+id/tvAppA_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/app"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingVertical="4dp"
+            android:text="3个" />
+
+        <TextView
+            android:id="@+id/tvAction_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/high"
+            android:gravity="center"
+            android:paddingVertical="4dp"
+            android:text="点击我的"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_marginHorizontal="17dp"/>
+
+        <TextView
+            android:id="@+id/tvMiniAppA_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/miniapp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingVertical="4dp"
+            android:text="5个" />
+    </TableRow>
+
+    <TableRow >
+
+        <TextView
+            android:id="@+id/tvAppA_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/app"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingVertical="4dp"
+            android:text="3个" />
+
+        <TextView
+            android:id="@+id/tvAction_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/high"
+            android:gravity="center"
+            android:paddingVertical="4dp"
+            android:text="点击我的"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_marginHorizontal="17dp"/>
+
+        <TextView
+            android:id="@+id/tvMiniAppA_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/miniapp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingVertical="4dp"
+            android:text="5个" />
+    </TableRow>
+
+    <TableRow android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvAppA_5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/action_round_bottom"
+            android:backgroundTint="@color/app"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingVertical="4dp"
+            android:text="4039个" />
+
+        <TextView
+            android:id="@+id/tvAction_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/action_round_bottom"
+            android:backgroundTint="@color/high"
+            android:gravity="center"
+            android:paddingVertical="4dp"
+            android:text="点击第一个商品"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_marginHorizontal="17dp"/>
+
+        <TextView
+            android:id="@+id/tvMiniAppA_5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/action_round_bottom"
+            android:backgroundTint="@color/miniapp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingVertical="4dp"
+            android:text="2980个" />
     </TableRow>
 
 </TableLayout>

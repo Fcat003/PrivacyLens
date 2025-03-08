@@ -10,4 +10,6 @@
     <color name="high">#26F80707</color>
     <color name="min">#0DFCCA00</color>
     <color name="low">#1AA2EF4D</color>
+    <color name="info_back">#DCF3FF</color>
+    <color name="hint">#6C707E</color>
 </resources>

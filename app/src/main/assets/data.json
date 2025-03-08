@@ -1,26 +1,32 @@
 [
   {
-    "packageName": "com.package.meituan",
-    "appName": "美团",
-    "recommend": "App端",
-    "privacyCount_app": [1, 2, 0, 0,1,3,5,1,4,2,4,0],
-    "privacyCount_miniApp": [1, 6, 0, 0,1,3,0,1,4,2,4,0],
-    "score": [80, 85]
-  },
-  {
     "packageName": "tv.danmaku.bili",
     "appName": "哔哩哔哩",
     "recommend": "App端",
-    "privacyCount_app": [0, 6, 0, 1,1,3,0,1,2,2,1,0],
-    "privacyCount_miniApp": [1, 6, 0, 0,1,3,0,1,4,2,4,0],
-    "score": [95, 80]
+    "privacyCount_app": [1, 2, 0, 0,1,3,5,1,4,2,4,0,0],
+    "privacyCount_miniApp": [1, 6, 0, 0,1,3,0,1,4,2,4,0,0],
+    "score": [80, 85],
+    "actions": ["应用启动","点击主页","进行搜索","点击第一条视频"],
+    "actionCount_app": [1,2,1,0,0],
+    "actionCount_miniApp": [1,4,2,4,0]
+  },
+  {
+    "packageName": "com.tencent.mm",
+    "appName": "微信",
+    "recommend": "App端",
+    "privacyCount_app": [0, 6, 0, 1,1,3,0,1,2,2,1,0,0],
+    "privacyCount_miniApp": [1, 6, 0, 0,1,3,0,1,4,2,4,0,0],
+    "score": [95, 80],
+    "actions": ["应用启动","点击我的","点击主页","点击聊天框","点击朋友圈","随便点"],
+    "actionCount_app": [1,2,1,0,0,9],
+    "actionCount_miniApp": [1,4,2,4,0,8]
   },
   {
     "packageName": "com.package.example",
     "appName": "应用二",
     "recommend": "app端",
-    "privacyCount_app": [0, 6, 0, 1,1,3,0,1,2,2,1,0],
-    "privacyCount_miniApp": [1, 6, 0, 0,1,3,0,1,4,2,4,0],
+    "privacyCount_app": [0, 6, 0, 1,1,3,0,1,2,2,1,0,0],
+    "privacyCount_miniApp": [1, 6, 0, 0,1,3,0,1,4,2,4,0,0],
     "score": [75, 80]
   }
 ]

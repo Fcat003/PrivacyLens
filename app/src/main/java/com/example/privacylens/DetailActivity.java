@@ -8,16 +8,19 @@ import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -27,7 +30,6 @@ public class DetailActivity extends AppCompatActivity {
     private Context context;
     private static final String TAG = "DetailActivity";
     private TextView tvText; // 用于显示推荐信息
-    private TextView tvAppInfo; // 用于显示应用名称和包名
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -39,7 +41,6 @@ public class DetailActivity extends AppCompatActivity {
         context = this;
 
         tvText = findViewById(R.id.tvText);
-        tvAppInfo = findViewById(R.id.tvAppInfo);
 
         // 获取传递过来的包名
         Intent intent = getIntent();
@@ -52,7 +53,11 @@ public class DetailActivity extends AppCompatActivity {
                     String appName = appData.getString("appName");
                     JSONArray privacyCount_miniApp = appData.getJSONArray("privacyCount_miniApp");
                     JSONArray privacyCount_app = appData.getJSONArray("privacyCount_app");
+                    JSONArray actions = appData.getJSONArray("actions");
+                    JSONArray actionCount_app = appData.getJSONArray("actionCount_app");
+                    JSONArray actionCount_miniApp = appData.getJSONArray("actionCount_miniApp");
                     setPrivacyCount(privacyCount_app, privacyCount_miniApp);
+                    setActionCount(actions,actionCount_app,actionCount_miniApp);
                     String recommend = appData.getString("recommend");
                     JSONArray score = appData.getJSONArray("score");
                     setScore(score);
@@ -77,13 +82,24 @@ public class DetailActivity extends AppCompatActivity {
                 tvText.setText("未找到对应数据");
             }
         }
+
+        ImageView infoImage = findViewById(R.id.info);
+        infoImage.setOnClickListener(v -> {
+            // 跳转到 InfoActivity
+            Intent intent_ = new Intent(context, InfoActivity.class);
+            // 如果需要传递数据，也可以使用 intent.putExtra("key", "value");
+            context.startActivity(intent_);
+        });
     }
 
     /**
-     * 从 assets/data.json 文件中读取数据，根据 packageName 查找对应应用数据
+     * 尝试从内部存储读取 JSON 文件，再回退到 assets/data.json
      */
     private JSONObject getDataForPackage(String packageName) {
-        String jsonStr = readJsonFromAssets("data.json");
+        String jsonStr = readJsonFromFile("data.json");
+        if (jsonStr == null) {
+            jsonStr = readJsonFromAssets("data.json");
+        }
         if (jsonStr == null) {
             return null;
         }
@@ -117,6 +133,25 @@ public class DetailActivity extends AppCompatActivity {
             return sb.toString();
         } catch (IOException e) {
             Log.e(TAG, "Error reading JSON file", e);
+        }
+        return null;
+    }
+
+    /**
+     * 从内部存储中读取 JSON 文件内容
+     */
+    private String readJsonFromFile(String fileName) {
+        StringBuilder sb = new StringBuilder();
+        try (FileInputStream fis = openFileInput(fileName);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            return sb.toString();
+        } catch (IOException e) {
+            // 文件可能不存在时返回 null
+            Log.e(TAG, "Error reading JSON file from internal storage", e);
         }
         return null;
     }
@@ -172,12 +207,12 @@ public class DetailActivity extends AppCompatActivity {
             }
             tvApp2.setText(sbApp2.toString());
 
-            // privacyCount_app：接下来2个数据到 tvApp_3
+            // privacyCount_app：接下来3个数据到 tvApp_3
             StringBuilder sbApp3 = new StringBuilder();
-            for (int i = 10; i < 12; i++) {
+            for (int i = 10; i < 13; i++) {
                 int value = privacyCount_app.getInt(i);
                 sbApp3.append(value == 0 ? "-" : value + "个");
-                if (i < 11) {
+                if (i < 12) {
                     sbApp3.append("\n");
                 }
             }
@@ -205,12 +240,12 @@ public class DetailActivity extends AppCompatActivity {
             }
             tvMiniApp2.setText(sbMini2.toString());
 
-            // privacyCount_miniApp：最后2个数据到 tvMiniApp_3
+            // privacyCount_miniApp：最后3个数据到 tvMiniApp_3
             StringBuilder sbMini3 = new StringBuilder();
-            for (int i = 10; i < 12; i++) {
+            for (int i = 10; i < 13; i++) {
                 int value = privacyCount_miniApp.getInt(i);
                 sbMini3.append(value == 0 ? "-" : value + "个");
-                if (i < 11) {
+                if (i < 12) {
                     sbMini3.append("\n");
                 }
             }
@@ -218,5 +253,91 @@ public class DetailActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setActionCount(JSONArray actions, JSONArray actionCount_app, JSONArray actionCount_miniApp) throws JSONException {
+        TextView[] tvActions = new TextView[] {
+                findViewById(R.id.tvAction_1),
+                findViewById(R.id.tvAction_2),
+                findViewById(R.id.tvAction_3),
+                findViewById(R.id.tvAction_4),
+                findViewById(R.id.tvAction_5),
+        };
+        TextView[] tvAppAs = new TextView[] {
+                findViewById(R.id.tvAppA_1),
+                findViewById(R.id.tvAppA_2),
+                findViewById(R.id.tvAppA_3),
+                findViewById(R.id.tvAppA_4),
+                findViewById(R.id.tvAppA_5),
+        };
+        TextView[] tvMiniAppAs = new TextView[] {
+                findViewById(R.id.tvMiniAppA_1),
+                findViewById(R.id.tvMiniAppA_2),
+                findViewById(R.id.tvMiniAppA_3),
+                findViewById(R.id.tvMiniAppA_4),
+                findViewById(R.id.tvMiniAppA_5),
+        };
+        int count = actions.length();
+
+// 如果实际数据个数小于5，将多余的控件隐藏
+        if (count < 5) {
+            for (int i = count; i < 5; i++) {
+                TextView tvAction = tvActions[i];
+                TextView tvAppA = tvAppAs[i];
+                TextView tvMiniA = tvMiniAppAs[i];
+                tvAction.setVisibility(View.GONE);
+                tvAppA.setVisibility(View.GONE);
+                tvMiniA.setVisibility(View.GONE);
+            }
+        }
+
+// 循环遍历前5个控件（或者数据个数不足时循环到 count 为止）
+        for (int i = 0; i < 5; i++) {
+            // 如果i超出数据个数，则退出循环
+            if (i >= count) {
+                break;
+            }
+            // 获取对应的控件
+            TextView tvAction = tvActions[i];
+            TextView tvAppA = tvAppAs[i];
+            TextView tvMiniA = tvMiniAppAs[i];
+
+            // 根据条件设置背景资源（注意使用 setBackgroundResource() 方法）
+            if (i == 0) {
+                tvAction.setBackgroundResource(R.drawable.action_rounded_top);
+                tvAction.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.high));
+
+                tvAppA.setBackgroundResource(R.drawable.action_rounded_top);
+                tvAppA.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.app));
+
+                tvMiniA.setBackgroundResource(R.drawable.action_rounded_top);
+                tvMiniA.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.miniapp));
+            } else if (i == count - 1) {
+                tvAction.setBackgroundResource(R.drawable.action_round_bottom);
+                tvAction.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.high));
+                tvAppA.setBackgroundResource(R.drawable.action_round_bottom);
+                tvAppA.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.app));
+                tvMiniA.setBackgroundResource(R.drawable.action_round_bottom);
+                tvMiniA.setBackgroundTintList(ContextCompat.getColorStateList(context, R.color.miniapp));
+            }
+
+            // 构造字符串
+            StringBuilder sbApp = new StringBuilder();
+            StringBuilder sbMiniApp = new StringBuilder();
+            try {
+                int app_count = actionCount_app.getInt(i);
+                int mini_count = actionCount_miniApp.getInt(i);
+                sbApp.append(app_count == 0 ? "-" : app_count + "个");
+                sbMiniApp.append(mini_count == 0 ? "-" : mini_count + "个");
+
+                // 设置对应控件文本
+                tvAction.setText(actions.getString(i));
+                tvAppA.setText(sbApp.toString());
+                tvMiniA.setText(sbMiniApp.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
